@@ -2,7 +2,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const fileName = './status.json'
+const fileName = path.resolve(__dirname, '../status.json');
 
 const Utils = {
   /**
