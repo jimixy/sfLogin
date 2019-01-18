@@ -1,6 +1,6 @@
 {
   "name": "jimi-login",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,8 @@
   },
   "bin": {
     "sfLogin": "bin/login",
-    "sfConfig": "bin/conf"
+    "sfConfig": "bin/conf",
+    "sfClearn": "bin/clearn"
   },
   "keywords": [],
   "author": "",
@@ -28,5 +29,8 @@
   "bugs": {
     "url": "https://github.com/jimixy/sfLogin/issues"
   },
-  "homepage": "https://github.com/jimixy/sfLogin#readme"
+  "homepage": "https://github.com/jimixy/sfLogin#readme",
+  "__npminstall_done": "Fri Jan 18 2019 15:07:57 GMT+0800 (中国标准时间)",
+  "_from": "jimi-login@1.0.2",
+  "_resolved": "http://registry.npm.taobao.org/jimi-login/download/jimi-login-1.0.2.tgz"
 }
