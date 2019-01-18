@@ -8,20 +8,18 @@
   },
   "bin": {
     "sfLogin": "bin/login",
-    "sfConfig": "bin/config"
+    "sfConfig": "bin/conf"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "baidu-aip-sdk": "^2.3.9",
-    "inquirer": "^6.2.1",
-    "puppeteer": "^1.11.0"
-  },
   "dependencies": {
     "dayjs": "^1.8.0",
     "extend": "^3.0.2",
-    "node-localstorage": "^1.3.1"
+    "node-localstorage": "^1.3.1",
+    "baidu-aip-sdk": "^2.3.9",
+    "inquirer": "^6.2.1",
+    "puppeteer": "^1.11.0"
   },
   "repository": {
     "type": "git",
