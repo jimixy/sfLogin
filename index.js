@@ -61,7 +61,7 @@ function startLogin() {
 
   isAfterStart = CompareDate(currentTime, startTime) 
     && CompareDate(currentTime, minStartTime)
-    // && CompareDate(maxStartTime, currentTime);
+    && CompareDate(maxStartTime, currentTime);
   if (!Object.keys(accounts).length) {
     console.log('请配置打卡账号！！！');
     return
@@ -229,7 +229,7 @@ async function doLogin(account, password, isAfterEnd, errCount) {
               [account]: newObj
             });
             add && console.log(`(●'◡'●) ${account}在${signOffTime.replace(':', '点')}下班打卡了 (●'◡'●)`);
-            const savePath = path.resolve(__dirname, `./recode/${account}/${currentDate}/${signInTime.replace(':', '点')}下班.png`);
+            const savePath = path.resolve(__dirname, `./recode/${account}/${currentDate}/${signOffTime.replace(':', '点')}下班.png`);
             setTimeout(async () => {
               await page.screenshot({
                 path: savePath
