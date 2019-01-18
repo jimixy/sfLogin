@@ -1,9 +1,12 @@
 
 const inquirer = require('inquirer')
 const extend = require('extend');
+const path = require('path');
+
 if (typeof localStorage === "undefined" || localStorage === null) {
   var LocalStorage = require('node-localstorage').LocalStorage;
-  localStorage = new LocalStorage('./scratch');
+  const scratch = path.resolve(__dirname, './scratch');
+  localStorage = new LocalStorage(scratch);
 }
 
 const obj = {
