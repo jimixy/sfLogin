@@ -1,12 +1,13 @@
 
 
+const path = require('path');
 const extend = require('extend');
+
 if (typeof localStorage === "undefined" || localStorage === null) {
   var LocalStorage = require('node-localstorage').LocalStorage;
-  localStorage = new LocalStorage('./scratch');
+  const scratch = path.resolve(__dirname, './scratch');
+  localStorage = new LocalStorage(scratch);
 }
-
-// localStorage.clear(); return
 
 // 打卡账号和密码
 const accounts = {}
