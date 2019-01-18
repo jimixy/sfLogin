@@ -62,7 +62,10 @@ function startLogin() {
   isAfterStart = CompareDate(currentTime, startTime) 
     && CompareDate(currentTime, minStartTime)
     // && CompareDate(maxStartTime, currentTime);
-
+  if (!Object.keys(accounts).length) {
+    console.log('请配置打卡账号！！！');
+    return
+  }
   Object.entries(accounts).forEach(([key, value]) => {
     errCounts[key] = 0;
     const find = Utils.findFile(key)
@@ -143,13 +146,14 @@ async function doLogin(account, password, isAfterEnd, errCount) {
         height
       };
     });
+    const imgCode = path.resolve(__dirname, './images/imgCode.png');
     // 截取验证码图片 用于识别
     await page.screenshot({
-      path: 'images/imgCode.png',
+      path: imgCode,
       clip: rect
     });
     // 调用百度接口识别--核心代码
-    getPicCode('images/imgCode.png', async code => {
+    getPicCode(imgCode, async code => {
       // console.log('code', code);
       if (code) {
         // 设置账号
@@ -192,11 +196,12 @@ async function doLogin(account, password, isAfterEnd, errCount) {
             const add = Utils.addFile({
               [account]: newObj
             });
-            add && console.log(`🌼🌼🌼 ${account}在${signInTime.replace(':', '点')}上班打卡了🌼🌼🌼`);
+            add && console.log(`(●'◡'●) ${account}在${signInTime.replace(':', '点')}上班打卡了 (●'◡'●)`);
+            const savePath = path.resolve(__dirname, `./recode/${account}/${currentDate}/${signInTime.replace(':', '点')}上班.png`);
             // 截图为证
             setTimeout(async () => {
               await page.screenshot({
-                path: `recode/${account}/${currentDate}/${signInTime.replace(':', '点')}上班.png`
+                path: savePath
               });
               await browser.close();
             }, 1500);
@@ -223,10 +228,11 @@ async function doLogin(account, password, isAfterEnd, errCount) {
             const add = Utils.addFile({
               [account]: newObj
             });
-            add && console.log(`🌼🌼🌼 ${account}在${signOffTime.replace(':', '点')}下班打卡了🌼🌼🌼`);
+            add && console.log(`(●'◡'●) ${account}在${signOffTime.replace(':', '点')}下班打卡了 (●'◡'●)`);
+            const savePath = path.resolve(__dirname, `./recode/${account}/${currentDate}/${signInTime.replace(':', '点')}下班.png`);
             setTimeout(async () => {
               await page.screenshot({
-                path: `recode/${account}/${currentDate}/${signOffTime.replace(':', '点')}下班.png`
+                path: savePath
               });
             }, 1500);
           }
